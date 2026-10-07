@@ -1,0 +1,64 @@
+.aside-menu {
+  width: 16.66666%;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+}
+.main {
+  width: 66.35802%;
+  padding: 40px 48px;
+}
+.img-zone {
+  width: 19.37172%;
+  height: 188px;
+}
+
+.data-right {
+  width: 80%;
+}
+.attribute-box {
+  width: calc((100% - 48px) * 0.25);
+}
+.skill-table {
+  th,
+  td {
+    text-align: center;
+  }
+  .point-input {
+    width: 64px;
+  }
+}
+.belongings {
+  &-left {
+    width: 57.59162%;
+  }
+  &-right {
+    width: 39.26701%;
+  }
+}
+.background {
+  &-textarea {
+    height: 108px;
+  }
+  .wordCount {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+  }
+}
+.derived-state {
+  max-width: 20%;
+  .progress {
+    height: 4px;
+  }
+  .san-bar {
+    background-color: #9db4c9;
+  }
+  .mp-bar {
+    background-color: #b9a6d6;
+  }
+  .luk-bar {
+    background-color: #d8b45a;
+  }
+}

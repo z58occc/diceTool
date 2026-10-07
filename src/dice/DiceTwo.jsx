@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import "../scss/diceTwo.scss";
 import "../../node_modules/animate.css";
 
 function DiceTwo() {

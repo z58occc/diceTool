@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import "../scss/diceThree.scss";
 
 function DiceThree() {
   const [isDraging, setIsDragong] = useState(false);

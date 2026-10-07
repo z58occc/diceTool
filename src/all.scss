@@ -1,0 +1,13 @@
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "./scss/utils/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap";
+
+@import "bootstrap/scss/utilities/api";
+
+
+@import "./scss/_diceThree.scss";
+@import "./scss/_diceTwo.scss";
+@import "./scss/_helper.scss";
+@import "./scss/_roleCard.scss";
