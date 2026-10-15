@@ -123,6 +123,33 @@ function RoleCard() {
     },
   ]);
 
+  const [derivedState, setDeriveState] = useState([
+    {
+      name: "生命值 HP",
+      color: "",
+      now: 10,
+      max: 10,
+    },
+    {
+      name: "魔法值 MP",
+      color: "mp",
+      now: 10,
+      max: 10,
+    },
+    {
+      name: "理智值 SAN",
+      color: "san",
+      now: 10,
+      max: 99,
+    },
+    {
+      name: "幸運 LUK",
+      color: "luk",
+      now: 10,
+      max: 99,
+    },
+  ]);
+
   const updateNum = (eng, value) => {
     setAttributes((prev) => {
       return prev.map((item) => {
@@ -131,7 +158,8 @@ function RoleCard() {
     });
   };
 
-  const updateSkillNum = (i, name, type, value) => {
+  const updateSkillNum = (i, type, value) => {
+    value = Math.min(max, Math.max(min, value));
     setSkills((prev) => {
       return prev.map((item, index) => {
         return i === index ? { ...item, [type]: value } : item;
@@ -527,7 +555,6 @@ function RoleCard() {
                               onChange={(e) => {
                                 updateSkillNum(
                                   i,
-                                  item.name,
                                   "occupation",
                                   Number(e.target.value),
                                 );
@@ -543,7 +570,6 @@ function RoleCard() {
                             onChange={(e) => {
                               updateSkillNum(
                                 i,
-                                item.name,
                                 "interest",
                                 Number(e.target.value),
                               );
@@ -666,21 +692,21 @@ function RoleCard() {
                 <div className="belongings-right">
                   <div className="border p-3 mb-3">
                     <div className="text-secondary mb-3">財產與生活水準</div>
-                    <div className="d-flex mb-3 justify-content-between">
+                    <div className="d-flex mb-3 justify-content-between align-items-center">
                       <span className="text-secondary">信用評級</span>
-                      <span>25</span>
+                      <input type="number" className="form-control w-25" />
                     </div>
                     <div className="d-flex mb-3 justify-content-between">
                       <span className="text-secondary">生活水準</span>
                       <span>標準</span>
                     </div>
-                    <div className="d-flex mb-3 justify-content-between">
+                    <div className="d-flex mb-3 justify-content-between align-items-center">
                       <span className="text-secondary">現金</span>
-                      <span> 50,000</span>
+                      <input type="number" className="form-control w-50" />
                     </div>
-                    <div className="d-flex mb-3 justify-content-between">
+                    <div className="d-flex mb-3 justify-content-between align-items-center">
                       <span className="text-secondary">資產</span>
-                      <span> 2,500,000</span>
+                      <input type="number" className="form-control w-50" />
                     </div>
                   </div>
                   <div className="border p-3">
@@ -829,95 +855,56 @@ function RoleCard() {
           <aside className="derived-state w-100 ">
             <div className="py-5 px-1">
               <h5 className="mb-4">衍生狀態</h5>
-              <div className="d-flex w-100 mb-1 justify-content-between">
-                <span className="mb-0 text-nowrap">生命值 HP</span>
-                <div className="d-flex flex-nowrap align-items-center">
-                  <img className="me-1" src={minusIcon} alt="" />
-                  <span>11</span>
-                  <span>/11</span>
-                  <img className="ms-1" src={plusIcon} alt="" />
-                </div>
-              </div>
-              <div className="progress mb-4">
-                <div
-                  className="progress-bar w-100"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="d-flex w-100 mb-1 justify-content-between">
-                <span className="mb-0  text-nowrap">理智值 SAN</span>
-                <div className="d-flex flex-nowrap align-items-center">
-                  <img className="me-1" src={minusIcon} alt="" />
-                  <span>11</span>
-                  <span>/11</span>
-                  <img className="ms-1" src={plusIcon} alt="" />
-                </div>
-              </div>
-              <div className="progress mb-4">
-                <div
-                  className="progress-bar san-bar w-100"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="d-flex w-100 mb-1 justify-content-between">
-                <span className="mb-0  text-nowrap">魔法值 MP</span>
-                <div className="d-flex flex-nowrap align-items-center">
-                  <img className="me-1" src={minusIcon} alt="" />
-                  <span>11</span>
-                  <span>/11</span>
-                  <img className="ms-1" src={plusIcon} alt="" />
-                </div>
-              </div>
-              <div className="progress mb-4">
-                <div
-                  className="progress-bar mp-bar w-100"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="d-flex w-100 mb-1 justify-content-between">
-                <span className="mb-0  text-nowrap">幸運 LUK</span>
-                <div className="d-flex flex-nowrap align-items-center">
-                  <img className="me-1" src={minusIcon} alt="" />
-                  <span>11</span>
-                  <span>/11</span>
-                  <img className="ms-1" src={plusIcon} alt="" />
-                </div>
-              </div>
-              <div className="progress mb-4">
-                <div
-                  className="progress-bar luk-bar w-100"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="d-flex w-100 jsutify-contents-between pb-4 border-bottom">
-                <div className="d-flex flex-column w-33 border justify-content-center align-items-center p-3">
-                  <span className="fw-bold">+1D4</span>
-                  <span className="fs-7">傷害加成</span>
-                </div>
-                <div className="d-flex flex-column w-33 border justify-content-center align-items-center p-3">
-                  <span className="fw-bold">+1</span>
-                  <span className="fs-7">體格</span>
-                </div>
-                <div className="d-flex flex-column w-33 border justify-content-center align-items-center p-3">
-                  <span className="fw-bold">7</span>
-                  <span className="fs-7">移動力</span>
-                </div>
-
-                <div></div>
-                <div></div>
-              </div>
+              {derivedState.map((item, i) => {
+                return (
+                  <div key={i}>
+                    <div className="d-flex w-100 mb-1 justify-content-between ">
+                      <span className="mb-0  text-nowrap">{item.name}</span>
+                      <div className="d-flex  align-items-center w-50 justify-content-between">
+                        <img
+                          className="me-1"
+                          src={minusIcon}
+                          alt=""
+                          onClick={() =>
+                            setDeriveState((prev) => {
+                              return prev.map((item, index) => {
+                                return i === index
+                                  ? { ...item, now: item.now - 1 }
+                                  : item;
+                              });
+                            })
+                          }
+                        />
+                        <span>{item.now}</span>
+                        <span>/{item.max}</span>
+                        <img
+                          className="ms-1"
+                          src={plusIcon}
+                          alt=""
+                          onClick={() =>
+                            setDeriveState((prev) => {
+                              return prev.map((item, index) => {
+                                return i === index
+                                  ? { ...item, now: item.now + 1 }
+                                  : item;
+                              });
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className="progress mb-4">
+                      <div
+                        className={`progress-bar w-100 ${item.color}-bar`}
+                        role="progressbar"
+                        aria-valuenow="100"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
               <h5 className="my-4">狀態標記</h5>
               <div className="d-flex gap-1 mb-1">
                 <div className=" w-50 border py-3  rounded ps-3">
