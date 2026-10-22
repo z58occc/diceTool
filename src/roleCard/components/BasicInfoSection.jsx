@@ -1,6 +1,7 @@
 import { useState } from "react";
 import uploadIcon from "../../assets/icons/upload.png";
 import { basicFields } from "../roleCardData";
+import SectionHeader from "./SectionHeader";
 import FormField from "./FormField";
 
 function BasicInfoSection() {
@@ -14,13 +15,11 @@ function BasicInfoSection() {
   return (
     <>
       <section className="mb-5">
-        <div className="mb-1">
-          <span className="fs-7 me-2-5 text-primary">01</span>
-          <span className="fs-4 fw-bold">基本資料</span>
-        </div>
-        <p className="text-muted border-bottom mb-4 pb-3">
-          角色名稱與職業為必填，其餘可於遊戲中補上
-        </p>
+        <SectionHeader
+          no="01"
+          title="基本資料"
+          desc="角色名稱與職業為必填，其餘可於遊戲中補上"
+        />
         <div className="d-flex">
           <label
             className="img-zone me-4
