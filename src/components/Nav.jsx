@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <ul className="nav m-5 d-flex align-items-center">
+    <ul className="nav m-5 d-flex align-items-center ">
       <div className="dropdown me-5">
         <button
           className="btn btn-secondary dropdown-toggle"

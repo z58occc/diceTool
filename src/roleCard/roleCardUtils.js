@@ -3,7 +3,7 @@ export const Min = 0;
 export const Max = 99;
 
 export const clamp = (value, min = Min, max = Max) => {
-  Math.min(max, Math.max(min, value));
+  return Math.min(max, Math.max(min, value));
 };
 
 // 一般 / 困難 / 極限

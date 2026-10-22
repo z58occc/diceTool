@@ -1,8 +1,8 @@
+import { clamp,updateAt } from "../roleCardUtils";
 import minusIcon from "../../assets/icons/minus.png";
 import plusIcon from "../../assets/icons/plus.png";
 
-
-function Aside({ derivedState,setDeriveState }) {
+function Aside({ derivedState, setDeriveState }) {
   return (
     <>
       <aside className="derived-state w-100 ">
@@ -19,12 +19,8 @@ function Aside({ derivedState,setDeriveState }) {
                       src={minusIcon}
                       alt=""
                       onClick={() =>
-                        setDeriveState((prev) => {
-                          return prev.map((item, index) => {
-                            return i === index
-                              ? { ...item, now: item.now - 1 }
-                              : item;
-                          });
+                        updateAt(setDeriveState, i, {
+                          now: clamp(item.now - 1, 0, item.max),
                         })
                       }
                     />
@@ -35,12 +31,8 @@ function Aside({ derivedState,setDeriveState }) {
                       src={plusIcon}
                       alt=""
                       onClick={() =>
-                        setDeriveState((prev) => {
-                          return prev.map((item, index) => {
-                            return i === index
-                              ? { ...item, now: item.now + 1 }
-                              : item;
-                          });
+                        updateAt(setDeriveState, i, {
+                          now: clamp(item.now + 1, 0, item.max),
                         })
                       }
                     />
@@ -48,8 +40,11 @@ function Aside({ derivedState,setDeriveState }) {
                 </div>
                 <div className="progress mb-4">
                   <div
-                    className={`progress-bar w-100 ${item.color}-bar`}
+                    className={`progress-bar   ${item.color}-bar`}
                     role="progressbar"
+                    style={{
+                      width: `${clamp((item.now / item.max) * 100, 0, 100)}%`,
+                    }}
                     aria-valuenow="100"
                     aria-valuemin="0"
                     aria-valuemax="100"

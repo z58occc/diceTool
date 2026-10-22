@@ -9,38 +9,42 @@ function SideMenu() {
     {
       str: "基本資料",
       img: dataIcon,
+      id: "basic-info",
     },
     {
       str: "屬性數值",
       img: attributeIcon,
+      id: "attribute",
     },
     {
       str: "技能",
       img: skillIcon,
+      id: "skills",
     },
     {
       str: "持有物",
       img: itemIcon,
+      id: "inventory",
     },
     {
       str: "背景與羈絆",
       img: backgroundIcon,
+      id: "background",
     },
   ];
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <>
       <aside className="aside-menu p-3 border  ">
         <ul className="menu list-unstyled position-sticky  sticky-top cursor-pointer">
-          {menu.map((item, i) => {
+          {menu.map((item) => {
             return (
               <li
-                key={i}
+                key={item.id}
                 className="p-2 d-flex align-items-center mb-2 "
-                onClick={() =>
-                  item.ref.current.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
+                onClick={() => scrollTo(item.id)}
               >
                 <img src={item.img} alt="" className="icon me-2" />
                 <span>{item.str}</span>

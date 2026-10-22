@@ -27,7 +27,7 @@ function SkillSection({ skills, setSkills }) {
 
   return (
     <>
-      <section className="mb-5" >
+      <section className="mb-5" id="skills">
         <SectionHeader
           no="03"
           title="技能"

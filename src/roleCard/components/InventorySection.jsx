@@ -40,7 +40,7 @@ function InventorySection({inventory,setInventory,setNewInventory,newInventory,w
 
   return (
     <>
-      <section className="mb-5 belongings" >
+      <section className="mb-5 belongings" id="inventory">
         <SectionHeader
           no="04"
           title="持有物"

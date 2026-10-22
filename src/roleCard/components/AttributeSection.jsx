@@ -17,7 +17,7 @@ function AttributeSection({ attributes, setAttributes }) {
 
   return (
     <>
-      <section className="mb-5">
+      <section className="mb-5" id="attribute">
         <SectionHeader
           no="02"
           title="屬性數值"

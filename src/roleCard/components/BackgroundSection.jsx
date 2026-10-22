@@ -3,7 +3,7 @@ import SectionHeader from "./SectionHeader";
 function BackgroundSection({ wordCount, setWordCount }) {
   return (
     <>
-      <section className="mb-5 background">
+      <section className="mb-5 background" id="background">
         <SectionHeader
           no="05"
           title="背景與羈絆"

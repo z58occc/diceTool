@@ -14,7 +14,7 @@ function BasicInfoSection() {
   }
   return (
     <>
-      <section className="mb-5">
+      <section className="mb-5" id="basic-info">
         <SectionHeader
           no="01"
           title="基本資料"
