@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import dataIcon from "../assets/icons/I.png";
-import skillIcon from "../assets/icons/I-2.png";
-import attributeIcon from "../assets/icons/I-5.png";
-import itemIcon from "../assets/icons/I-3.png";
-import backgroundIcon from "../assets/icons/I-4.png";
-import uploadIcon from "../assets/icons/upload.png";
+import BasicInfoSection from "./components/BasicInfoSection";
 import warnIcon from "../assets/icons/warn.png";
 import dragIcon from "../assets/icons/drag.png";
 import minusIcon from "../assets/icons/minus.png";
 import plusIcon from "../assets/icons/plus.png";
+import SideMenu from "./components/SideMenu";
 
 function RoleCard() {
   const basicDataRef = useRef(null);
@@ -27,34 +23,6 @@ function RoleCard() {
   ]);
   const min = 0;
   const max = 99;
-
-  const menu = [
-    {
-      str: "基本資料",
-      img: dataIcon,
-      ref: basicDataRef,
-    },
-    {
-      str: "屬性數值",
-      img: attributeIcon,
-      ref: attributeRef,
-    },
-    {
-      str: "技能",
-      img: skillIcon,
-      ref: skillRef,
-    },
-    {
-      str: "持有物",
-      img: itemIcon,
-      ref: itemRef,
-    },
-    {
-      str: "背景與羈絆",
-      img: backgroundIcon,
-      ref: backgroundRef,
-    },
-  ];
 
   const [attributes, setAttributes] = useState([
     {
@@ -235,165 +203,9 @@ function RoleCard() {
     <>
       <div className="container">
         <div className="d-flex w-100  ">
-          <aside className="aside-menu p-3 border  ">
-            <ul className="menu list-unstyled position-sticky  sticky-top cursor-pointer">
-              {menu.map((item, i) => {
-                return (
-                  <li
-                    key={i}
-                    className="p-2 d-flex align-items-center mb-2 "
-                    onClick={() =>
-                      item.ref.current.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    }
-                  >
-                    <img src={item.img} alt="" className="icon me-2" />
-                    <span>{item.str}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </aside>
+          <SideMenu />
           <main className="main border">
-            <section className="mb-5" ref={basicDataRef}>
-              <div className="mb-1">
-                <span className="fs-7 me-2-5 text-primary">01</span>
-                <span className="fs-4 fw-bold">基本資料</span>
-              </div>
-              <p className="text-muted border-bottom mb-4 pb-3">
-                角色名稱與職業為必填，其餘可於遊戲中補上
-              </p>
-              <div className="d-flex">
-                <label
-                  className="img-zone me-4
-              border  d-flex flex-column justify-content-center align-items-center
-                "
-                >
-                  {!preview ? (
-                    <>
-                      <img src={uploadIcon} alt="" className="mb-2" />
-                      <span className="text-secondary fs-7">上傳形象圖</span>
-                    </>
-                  ) : (
-                    <>
-                      <img
-                        className="w-100 h-100 object-fit-cover"
-                        src={preview}
-                        alt="預覽圖"
-                      />
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    hidden
-                    onChange={(e) => handleUpload(e)}
-                    accept="image/*"
-                  />
-                </label>
-                <ul className="list-unstyled d-flex flex-wrap data-right">
-                  <div
-                    className="d-flex justify-content-between
-                  gap-3
-                  "
-                  >
-                    <li className="w-33 ">
-                      <label
-                        htmlFor="chracter-name"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        角色名稱
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="chracter-name"
-                      />
-                    </li>
-                    <li className="w-33 ">
-                      <label
-                        htmlFor="player-name"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        玩家名稱
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="player-name"
-                      />
-                    </li>
-                    <li className="w-33 ">
-                      <label
-                        htmlFor="job"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        職業
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="job"
-                      />
-                    </li>
-                  </div>
-                  <div className="d-flex justify-content-between gap-3">
-                    <li className="w-25 ">
-                      <label
-                        htmlFor="job"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        年齡
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="job"
-                      />
-                    </li>
-                    <li className="w-25 ">
-                      <label
-                        htmlFor="job"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        性別
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="job"
-                      />
-                    </li>
-                    <li className="w-25 ">
-                      <label
-                        htmlFor="job"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        現居地
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="job"
-                      />
-                    </li>
-                    <li className="w-25 ">
-                      <label
-                        htmlFor="job"
-                        className="form-label fs-7 text-muted mb-2"
-                      >
-                        出生地
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control form-control-lg"
-                        id="job"
-                      />
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </section>
+            <BasicInfoSection />
 
             <section className="mb-5" ref={attributeRef}>
               <div className="mb-1">
